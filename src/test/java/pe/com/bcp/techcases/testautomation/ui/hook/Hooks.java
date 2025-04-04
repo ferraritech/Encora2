@@ -32,7 +32,7 @@ public class Hooks {
     @ParameterType(".*")
     public Class<PageObject> page(String pageName) {
         try {
-            return (Class<PageObject>) Class.forName("pe.com.bcp.techcases.testautomation.ui.pages." + pageName);
+            return (Class<PageObject>) Class.forName("pe.com.bcp.techcases.testautomation.ui.pages.sauce." + pageName);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

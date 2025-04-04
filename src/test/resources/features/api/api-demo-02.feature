@@ -20,16 +20,16 @@ Característica: Rest test (#2)
 
   @caso1
   Escenario: Crear un nuevo usuario y modificar sus datos
-    Dado que la URL es: "url.base"
+    Dado que la URL es: "api.base"
     #Crear un nuevo usuario
     Cuando creo un nuevo usuario
       | name | job      |
       | Juan | Profesor |
-    Entonces valido que el estado del servicio sea 200
+    Entonces valido que el estado del servicio sea 201
     Y obtengo el id del nuevo usuario creado
     #Actualizar el usuario creado
     Cuando actualizo el usuario creado con los nuevos datos
       | newName | newJob |
       | Maria   | Doctor |
-    Entonces valido que el estado del servicio sea 401
+    Entonces valido que el estado del servicio sea 200
     Y que los nuevos datos esten actualizados

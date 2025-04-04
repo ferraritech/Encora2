@@ -20,17 +20,17 @@ Característica: Demo Form (#3)
 
   @caso2
   Escenario: Agregar y validar la creación de un nuevo empleado
-    # Ingresar y validar el ingreso con las credenciales correctas
-    # En el menú, ir a la opción PIM > 'Add Employee'
-    # Agregar un nuevo empleado, ingresando los datos requeridos
-      # (Salvar el ID del nuevo empleado agregado)
-    # Completar y guardar los datos personales adicionales:
-        # NickName
-        # Driver's License Number
-        # License Expiry Date
-        # Nationality
-        # Marital Status
-        # Date of Birth
-        # Gender
-    # Ir a la opción 'Employee List', buscar al nuevo usuario creado por el ID y validar que existe
-    # Cerrar sesión
+     Ingresar y validar el ingreso con las credenciales correctas
+     En el menú, ir a la opción PIM > 'Add Employee'
+     Agregar un nuevo empleado, ingresando los datos requeridos
+       (Salvar el ID del nuevo empleado agregado)
+     Completar y guardar los datos personales adicionales:
+         NickName
+         Driver's License Number
+         License Expiry Date
+         Nationality
+         Marital Status
+         Date of Birth
+         Gender
+     Ir a la opción 'Employee List', buscar al nuevo usuario creado por el ID y validar que existe
+     Cerrar sesión

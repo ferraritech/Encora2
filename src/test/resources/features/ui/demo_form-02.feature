@@ -20,12 +20,23 @@ Característica: Demo Form (#2)
   @caso1
   Esquema del escenario: validar los mensajes de error de login fallido
     Dado que el usuario visita la pagina SauceDemoLoginPage
-    Cuando ingresa las credenciales "<user>" y "<pass>" para iniciar sesión
-    Entonces valida que el mensaje de error contiene
-    """
-    <error>
-    """
+    Cuando ingresa las credenciales user y pass para iniciar sesión
+      | user            | password     |
+      | locked_out_user | secret_sauce |
+    Entonces valida que el mensaje de error contiene "<error>"
 
     Ejemplos:
-      | user            | pass         | error                                 |
-      | locked_out_user | secret_sauce | Sorry, this user has been locked out. |
+      | error                                               |
+      | Epic sadface: Sorry, this user has been locked out. |
+
+  @caso1
+  Esquema del escenario: validar los mensajes de error de login con credenciales incorrectas
+    Dado que el usuario visita la pagina SauceDemoLoginPage
+    Cuando ingresa las credenciales user y pass para iniciar sesión
+      | user   | password     |
+      | ssssss | secret_sauce |
+    Entonces valida que el mensaje de error contiene "<error>"
+
+    Ejemplos:
+      | error                                                       |
+      | Username and password do not match any user in this service |

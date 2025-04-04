@@ -13,7 +13,11 @@ import java.util.logging.Logger;
  */
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        plugin = {},
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports/html", // Genera el reporte en HTML
+                "json:target/cucumber-reports/cucumber.json" // Genera el reporte en JSON
+                 },
         features = "src/test/resources/features/",
         stepNotifications = true,
         glue = "pe.com.bcp.techcases.testautomation",

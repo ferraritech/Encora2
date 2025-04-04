@@ -47,6 +47,7 @@ public class ApiClient {
     public void validateStatusCode(int statusCode) {
         //Agrega lo necesario para ver en el log de ejecución la Respuestas
         response.then()
+                .log().all()
                 .assertThat()
                 .statusCode(statusCode);
     }
@@ -73,7 +74,10 @@ public class ApiClient {
 
         //Agrega lo necesario para ver en el log de la Petición
         response = SerenityRest
-                .given().contentType(contentType)
+                .given()
+                .body(req)
+                .contentType(contentType)
+                .log().all()
                 .when()
                 .post(url);
 
@@ -81,7 +85,7 @@ public class ApiClient {
 
     @Step
     public void saveIdUser() {
-        String id = response.getBody().jsonPath().getString("<json path>");
+        String id = response.getBody().jsonPath().getString("id");
         Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Id del nuevo usuario >>> {0}", id);
         Serenity.setSessionVariable("newUserId").to(id);
     }
@@ -101,9 +105,11 @@ public class ApiClient {
 
         //Agrega lo necesario para ver en el log de la Petición
         response = SerenityRest
-                .given().contentType(contentType)
-                .queryParam("id", id)
+                .given()
                 .body(req)
+                .contentType(contentType)
+                .log().all()
+                .pathParam("id", id)
                 .when()
                 .put(url +"/{id}");
     }
@@ -114,8 +120,8 @@ public class ApiClient {
         String expectedNewName = Serenity.sessionVariableCalled("expectedNewName");
         String expectedNewJob = Serenity.sessionVariableCalled("expectedNewJob");
 
-        String newName = "";
-        String newJob = "";
+        String newName = response.jsonPath().getString("name");
+        String newJob = response.jsonPath().getString("job");
 
         Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Nuevo nombre del usuario >>> {0}", newName);
         Logger.getLogger(this.getClass().getName()).log(Level.INFO, "Nuevo trabajo del usuario >>> {0}", newJob);
